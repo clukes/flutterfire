@@ -20,6 +20,7 @@ class AuthResolver extends StatelessWidget {
         apiSecretKey: TWITTER_API_SECRET_KEY,
         redirectUri: TWITTER_REDIRECT_URI,
       ),
+      AnonymousProviderConfiguration(),
     ];
 
     return StreamBuilder<User?>(

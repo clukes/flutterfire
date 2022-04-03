@@ -8,6 +8,8 @@ import 'package:flutterfire_ui/auth.dart';
 import 'package:flutterfire_ui/i10n.dart';
 import 'package:flutterfire_ui/src/auth/widgets/email_link_sign_in_button.dart';
 
+import '../configs/anonymous_provider_configuration.dart';
+import '../widgets/anonymous_sign_in_button.dart';
 import '../widgets/internal/title.dart';
 
 typedef AuthViewContentBuilder = Widget Function(
@@ -212,6 +214,12 @@ class LoginViewState extends State<LoginView> {
                 EmailLinkSignInButton(
                   auth: widget.auth,
                   config: config,
+                ),
+                const SizedBox(height: 8),
+              ] else if (config is AnonymousProviderConfiguration) ...[
+                const SizedBox(height: 8),
+                AnonymousSignInButton(
+                  auth: widget.auth,
                 ),
               ] else if (config is OAuthProviderConfiguration && !_buttonsBuilt)
                 _buildOAuthButtons(platform),
